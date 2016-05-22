@@ -21,7 +21,8 @@ class ShortUrlController < ApplicationController
     # SELECT  "short_url_lists".* FROM "short_url_lists" WHERE "short_url_lists"."unique_string" = ? LIMIT 1  [["unique_string", "959ee2a935"]]
     @short_url = ShortUrlList.find_by(set_unique_string)
     if @short_url.present?
-      redirect_to @short_url.redirect_to
+      @short_url.increment(:count).save
+      # redirect_to @short_url.redirect_to
     else
       flash[:notice]='Short Url is not exist!'
       redirect_to new_short_url_url

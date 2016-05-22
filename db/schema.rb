@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520091209) do
+ActiveRecord::Schema.define(version: 20160522155125) do
 
   create_table "short_url_lists", force: :cascade do |t|
-    t.string   "unique_string", null: false
-    t.string   "redirect_to",   null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "unique_string",             null: false
+    t.string   "redirect_to",               null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "count",         default: 0
   end
 
   add_index "short_url_lists", ["unique_string"], name: "index_short_url_lists_on_unique_string", unique: true

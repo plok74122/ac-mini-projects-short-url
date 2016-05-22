@@ -1,0 +1,10 @@
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4>轉跳中</h4>
+  </div>
+  <div class="panel-body">
+    第<%= @short_url.count %>次轉址到<%= link_to @short_url.redirect_to %><br/>
+    5秒後自動轉跳
+    <script>window.setTimeout("location.href='<%= @short_url.redirect_to %>'", 5000);</script>
+  </div>
+</div>
