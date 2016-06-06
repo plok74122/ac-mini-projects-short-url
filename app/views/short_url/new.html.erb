@@ -1,0 +1,24 @@
+<div class="panel panel-default devise-bs">
+  <% if @short_url.errors.any? %>
+      <ul>
+        <% @short_url.errors.full_messages.each do |msg| %>
+            <li style="color:red"><%= msg %></li>
+        <% end %>
+      </ul>
+  <% end %>
+  <div class="panel-heading">
+    <h4>產生短網址</h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for @short_url, :url => short_url_index_path(), :method => 'post' do |f| %>
+        <div class="form-group">
+          <%= f.label :redirect_to %>
+          <%= f.url_field :redirect_to, autofocus: true, class: "form-control" %>
+        </div>
+        <%= f.submit "產生短網址", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <h5><%= notice %></h5>
+  </div>
+</div>

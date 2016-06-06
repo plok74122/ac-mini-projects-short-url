@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # RESTful路由請參考
+  # https://ihower.tw/rails4/restful.html
+  resources :short_url
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,11 @@
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4>短網址</h4>
+  </div>
+  <div class="panel-body">
+    <h5>網址：<%=  link_to request.host_with_port + '/' + @short_url.unique_string , "http://"+request.host_with_port + '/' + @short_url.unique_string %></h5>
+  </div>
+  <div class="panel-body">
+    <%= button_to "Short Url Generate", new_short_url_path , :class => "btn btn-success", :method => :get %>
+  </div>
+</div>
