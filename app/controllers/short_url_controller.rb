@@ -15,9 +15,23 @@ class ShortUrlController < ApplicationController
       end
     end
   end
-
+  def show
+    # set_unique_string是一個Hash Parameters: {"unique_string"=>"959ee2a935"}
+    # 運用find_by 放入一個Hash會產生的SQL語法
+    # SELECT  "short_url_lists".* FROM "short_url_lists" WHERE "short_url_lists"."unique_string" = ? LIMIT 1  [["unique_string", "959ee2a935"]]
+    @short_url = ShortUrlList.find_by(set_unique_string)
+    if @short_url.present?
+      redirect_to @short_url.redirect_to
+    else
+      flash[:notice]='Short Url is not exist!'
+      redirect_to new_short_url_url
+    end
+  end
   private
   def set_params
     params.require(:short_url_list).permit(:redirect_to)
+  end
+  def set_unique_string
+    params.permit(:unique_string)
   end
 end

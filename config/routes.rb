@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # RESTful路由請參考
   # https://ihower.tw/rails4/restful.html
   resources :short_url
+
+  root "short_url#new"
+  get ':unique_string', :to => 'short_url#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
